@@ -117,22 +117,3 @@ function updateUIOnUserLogin() {
   updateNavOnLogin();
 }
 
-$submitButton.on("click", subStory)
-
-async function subStory(evt){
-  evt.preventDefault()
-  console.log(currentUser)
-  const author = $("#author").val()
-  const title = $("#title").val()
-  const url = $("#url").val()
-  let newStory = await storyList.addStory(currentUser,
-    {title: `${title}`, author: `${author}`, url: `${url}`});
-    await getAndShowStoriesOnStart()
-    $submitForm.hide()
-  
-
-}
-
-
-// //let newStory = await storyList.addStory(currentUser,
-//   {title: "Test", author: "Me", url: "http://meow.com"});
