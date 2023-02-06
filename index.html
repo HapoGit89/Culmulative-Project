@@ -37,8 +37,10 @@
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
-  <div class="navbar-interaction">
-    <a class="nav-link hidden" href="#" id="nav-all">submit</a>
+  <div class="navbar-interaction hidden">
+    <a class="nav-link" href="#" id="submit">submit</a>
+    <a class="nav-link" href="#" id="favorites">favorites</a>
+    <a class="nav-link" href="#" id="mystories">my stories</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -46,14 +48,15 @@
     <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
-<div class="story-sub hidden" display="flex">
+<div class="story-sub hidden container" display="flex">
   <form>
     <label for="author">author</label>
     <input type="text" id ="author">
     <label for="title">title</label>
     <input type="text" id="title">
     <label for="url">url</label>
-    <input type="text" id="url">   
+    <input type="text" id="url">  
+    <button type="submit" id="subBut">Submit Story</button> 
   </form>
 </div>
 <!-- area for stories (all stories, user stories, favorites) -->
@@ -107,6 +110,30 @@
     <button type="submit">create account</button>
   </form>
 </section>
+
+
+<!-- Submit
+<form
+action="#"
+id="submit-form"
+class="submit-form hidden"
+method="post">
+<h4>Submit A Story</h4>
+<div class="submit-author">
+<label for="author">author</label>
+<input id="author" placeholder="story author">
+</div>
+<div class="submit-title">
+<label for="title">title</label>
+<input id="title" placeholder="story title">
+</div>
+<div class="submit-url">
+<label for="url">url</label>
+<input id="url" placeholder="story url">
+</div>
+<button type="submit">Submit Story</button>
+</form>
+</section> -->
 
 <!-- Library JS & our JS -->
 <script src="https://unpkg.com/jquery"></script>

@@ -21,6 +21,8 @@ async function login(evt) {
   // which we'll make the globally-available, logged-in user.
   currentUser = await User.login(username, password);
 
+  
+
   $loginForm.trigger("reset");
 
   saveUserCredentialsInLocalStorage();
@@ -114,3 +116,23 @@ function updateUIOnUserLogin() {
 
   updateNavOnLogin();
 }
+
+$submitButton.on("click", subStory)
+
+async function subStory(evt){
+  evt.preventDefault()
+  console.log(currentUser)
+  const author = $("#author").val()
+  const title = $("#title").val()
+  const url = $("#url").val()
+  let newStory = await storyList.addStory(currentUser,
+    {title: `${title}`, author: `${author}`, url: `${url}`});
+    await getAndShowStoriesOnStart()
+    $submitForm.hide()
+  
+
+}
+
+
+// //let newStory = await storyList.addStory(currentUser,
+//   {title: "Test", author: "Me", url: "http://meow.com"});

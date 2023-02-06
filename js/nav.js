@@ -21,7 +21,7 @@ function navLoginClick(evt) {
   hidePageComponents();
   $loginForm.show();
   $signupForm.show();
-  $navAll.show()
+ 
 }
 
 $navLogin.on("click", navLoginClick);
@@ -34,5 +34,16 @@ function updateNavOnLogin() {
   $navLogin.hide();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
+  $navAction.show()
 }
+
+function toSubmit(){
+  $submitForm.show()
+
+
+}
+
+$submit.on("click", toSubmit)
+
+
 
