@@ -21,6 +21,7 @@ function navLoginClick(evt) {
   hidePageComponents();
   $loginForm.show();
   $signupForm.show();
+  $navAll.show()
 }
 
 $navLogin.on("click", navLoginClick);
@@ -34,3 +35,4 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
