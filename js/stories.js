@@ -21,10 +21,14 @@ async function getAndShowStoriesOnStart() {
 
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
-
+  let starClass = ''
+  if (!currentUser){starClass = "star hidden" }
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
+      <span class="${starClass}">
+        <i class="far fa-star"></i>
+      </span>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -39,7 +43,6 @@ function generateStoryMarkup(story) {
 
 function putStoriesOnPage() {
   console.debug("putStoriesOnPage");
-
   $allStoriesList.empty();
 
   // loop through all of our stories and generate HTML for them

@@ -2,6 +2,7 @@
 
 // global to hold the User instance of the currently-logged-in user
 let currentUser;
+const currentUserFavs = []
 
 /******************************************************************************
  * User login/signup/login
@@ -138,6 +139,15 @@ async function removeFav(storyId){
     });
  console.log(response)}
 
+async function getFavs(user){
+  const response = await axios.get(`https://hack-or-snooze-v3.herokuapp.com/users/${user.username}?token=${user.loginToken}`)
+console.log(response.data.user.favorites)
+for (let fav of response.data.user.favorites){
+  currentUserFavs.push(fav.storyId)
+  
+}
+console.log(currentUserFavs)
+}
 
 
  
