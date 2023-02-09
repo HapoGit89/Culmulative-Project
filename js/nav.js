@@ -15,14 +15,16 @@ function navAllStories(evt) {
 $body.on("click", "#nav-all", navAllStories);
 //Implement Event Listener for Stars which then adds and removes Favorites
 
-$body.on("click", function(e){
+$body.on("click", async function(e){
   if(e.target.classList.contains("fa-star")){
     if(e.target.classList.contains("far")){
       e.target.classList.remove ("far")
-      e.target.classList.add("fa", "solid")}
-    else { console.log("hi")
+      e.target.classList.add("fa", "solid")
+    await addFav(e.target.parentElement.parentElement.id)}
+    else {
       e.target.classList.add ("far")
-      e.target.classList.remove("fa", "solid")}
+      e.target.classList.remove("fa", "solid")
+    await removeFav(e.target.parentElement.parentElement.id)}
 }});
 
 /** Show login/signup on click on "login" */
