@@ -12,8 +12,6 @@ function navAllStories(evt) {
   putStoriesOnPage();
 }
 
-$body.on("click", "#nav-all", navAllStories);
-//Implement Event Listener for Stars which then adds and removes Favorites
 
 $body.on("click", async function(e){
   if(e.target.classList.contains("fa-star")){
@@ -27,6 +25,14 @@ $body.on("click", async function(e){
     await removeFav(e.target.parentElement.parentElement.id)}
 }});
 
+$favorites.on("click", function(){
+for (let story of $allStoriesList.children()){
+ 
+  if (!currentUser.favorites.some((el)=>{return (el.storyId===story.id) }))
+  {$(`#${story.id}`).hide()}
+}
+})
+
 /** Show login/signup on click on "login" */
 
 function navLoginClick(evt) {
@@ -36,6 +42,8 @@ function navLoginClick(evt) {
   $signupForm.show();
  
 }
+
+$cancelButton.on("click", (e)=>{ $submitForm.hide()})
 
 $navLogin.on("click", navLoginClick);
 
@@ -59,6 +67,15 @@ function toSubmit(){
 }
 
 $submit.on("click", toSubmit)
+
+$mainlogo.on("click", ()=>{
+  
+  
+  for (let story of $allStoriesList.children()){
+ 
+    {$(`#${story.id}`).show()}
+  }
+})
 
 
 

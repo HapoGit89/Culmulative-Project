@@ -119,35 +119,29 @@ function updateUIOnUserLogin() {
 }
 
 async function addFav(storyId){
-  console.log(currentUser.loginToken)
-  console.log(currentUser.username)
+  
   const response = await axios({
     url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.name}/favorites/${storyId}`,
     method: "POST",
     data: { token: currentUser.loginToken },
   });
- console.log(response)
+ await getFavs(currentUser)
 }
 
 async function removeFav(storyId){
-  console.log(currentUser.loginToken)
-  console.log(currentUser.username)
+  
   const response = await axios({
       url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.name}/favorites/${storyId}`,
       method: "DELETE",
       data: { token: currentUser.loginToken },
     });
- console.log(response)}
+    await getFavs(currentUser)}
 
-// async function getFavs(user){
-//   const response = await axios.get(`https://hack-or-snooze-v3.herokuapp.com/users/${user.username}?token=${user.loginToken}`)
-// console.log(response.data.user.favorites)
-// for (let fav of response.data.user.favorites){
-//   currentUserFavs.push(fav.storyId)
-  
-// }
-// console.log(currentUserFavs)
-// }
+async function getFavs(user){
+  const response = await axios.get(`https://hack-or-snooze-v3.herokuapp.com/users/${user.username}?token=${user.loginToken}`)
+currentUser.favorites = response.data.user.favorites
+
+}
 
 
  
