@@ -117,3 +117,9 @@ function updateUIOnUserLogin() {
   updateNavOnLogin();
 }
 
+async function addFav(user, storyId){
+  console.log(currentUser.loginToken)
+  console.log(currentUser.name)
+  const response = await axios.post(`https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.name}/favorites/${storyId}`, {token: currentUser.loginToken})
+ console.log(response)
+}
