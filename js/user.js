@@ -139,15 +139,15 @@ async function removeFav(storyId){
     });
  console.log(response)}
 
-async function getFavs(user){
-  const response = await axios.get(`https://hack-or-snooze-v3.herokuapp.com/users/${user.username}?token=${user.loginToken}`)
-console.log(response.data.user.favorites)
-for (let fav of response.data.user.favorites){
-  currentUserFavs.push(fav.storyId)
+// async function getFavs(user){
+//   const response = await axios.get(`https://hack-or-snooze-v3.herokuapp.com/users/${user.username}?token=${user.loginToken}`)
+// console.log(response.data.user.favorites)
+// for (let fav of response.data.user.favorites){
+//   currentUserFavs.push(fav.storyId)
   
-}
-console.log(currentUserFavs)
-}
+// }
+// console.log(currentUserFavs)
+// }
 
 
  

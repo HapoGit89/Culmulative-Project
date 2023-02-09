@@ -22,12 +22,21 @@ async function getAndShowStoriesOnStart() {
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
   let starClass = ''
-  if (!currentUser){starClass = "star hidden" }
+  let starFav = 'far fa-star'
+  if (!currentUser){starClass = "star hidden";
+}
+
+if (currentUser && currentUser.favorites.some(function(el){
+  return (el.storyId===story.storyId)
+})){starFav ='fa solid fa-star'}
+
+  
+  
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
       <span class="${starClass}">
-        <i class="far fa-star"></i>
+        <i class="${starFav}"></i>
       </span>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
