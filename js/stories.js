@@ -36,7 +36,7 @@ if (currentUser && currentUser.favorites.some(function(el){
   return $(`
       <li id="${story.storyId}">
       <span class="${starClass}">
-        <i class="${starFav}"></i>
+        <i class="${starFav}" id="star"></i>
       </span>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
@@ -58,9 +58,13 @@ function putStoriesOnPage() {
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
+    
+  
+
   }
 
   $allStoriesList.show();
+  const stars = document.querySelectorAll("#star")
 }
 
 $submitButton.on("click", subStory)
