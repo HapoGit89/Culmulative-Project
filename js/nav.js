@@ -33,6 +33,16 @@ for (let story of $allStoriesList.children()){
 }
 })
 
+$ownStories.on("click", function(){
+  for (let story of $allStoriesList.children()){
+ 
+    if (!currentUser.ownStories.some((el)=>{return (el.storyId===story.id) }))
+    {$(`#${story.id}`).hide()}
+    $("#trashcan").show()
+  }
+  
+})
+
 /** Show login/signup on click on "login" */
 
 function navLoginClick(evt) {

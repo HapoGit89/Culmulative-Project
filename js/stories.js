@@ -30,11 +30,16 @@ if (currentUser && currentUser.favorites.some(function(el){
   return (el.storyId===story.storyId)
 })){starFav ='fa solid fa-star'}
 
+ const trashClass='trash-can hidden'
+
   
   
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
+      <span class="${trashClass}" id="trashcan">
+      <i class="fas fa-trash-alt""></i>
+    </span>
       <span class="${starClass}">
         <i class="${starFav}" id="star"></i>
       </span>
@@ -64,10 +69,10 @@ function putStoriesOnPage() {
   }
 
   $allStoriesList.show();
-  const stars = document.querySelectorAll("#star")
 }
 
 $submitButton.on("click", subStory)
+
 
 async function subStory(evt){
   evt.preventDefault()
@@ -79,6 +84,7 @@ async function subStory(evt){
     {title: `${title}`, author: `${author}`, url: `${url}`});
     await getAndShowStoriesOnStart()
     $submitForm.hide()
+    currentUser.ownStories.push(newStory)
   
 
 }
