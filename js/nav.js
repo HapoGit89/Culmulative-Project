@@ -12,6 +12,14 @@ function navAllStories(evt) {
   putStoriesOnPage();
 }
 
+$body.on("click", function(e){
+  if (e.target.classList.contains("fa-trash-alt")){
+    $(e.target.parentElement.parentElement).remove()
+    delStory(e.target.parentElement.parentElement.id)
+    
+
+  }
+})
 
 $body.on("click", async function(e){
   if(e.target.classList.contains("fa-star")){
@@ -35,10 +43,9 @@ for (let story of $allStoriesList.children()){
 
 $ownStories.on("click", function(){
   for (let story of $allStoriesList.children()){
- 
     if (!currentUser.ownStories.some((el)=>{return (el.storyId===story.id) }))
     {$(`#${story.id}`).hide()}
-    $("#trashcan").show()
+    $(story.children[0]).show()
   }
   
 })
@@ -82,11 +89,7 @@ $submit.on("click", toSubmit)
 
 $mainlogo.on("click", ()=>{
   
-  
-  for (let story of $allStoriesList.children()){
- 
-    {$(`#${story.id}`).show()}
-  }
+  getAndShowStoriesOnStart()
 })
 
 

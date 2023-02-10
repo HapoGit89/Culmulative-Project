@@ -38,7 +38,7 @@ if (currentUser && currentUser.favorites.some(function(el){
   return $(`
       <li id="${story.storyId}">
       <span class="${trashClass}" id="trashcan">
-      <i class="fas fa-trash-alt""></i>
+      <i class="fas fa-trash-alt"></i>
     </span>
       <span class="${starClass}">
         <i class="${starFav}" id="star"></i>
@@ -89,3 +89,29 @@ async function subStory(evt){
 
 }
 
+async function delStory(storyId){
+
+  const delStory = await axios({
+    url: `https://hack-or-snooze-v3.herokuapp.com/stories/${storyId}`,
+    method: "DELETE",
+    data: { token: currentUser.loginToken },
+  });
+
+
+currentUser.ownStories = await getUserStories()
+
+
+
+}
+
+
+
+
+async function getUserStories(){
+  const response = await axios({
+    url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.name}?`,
+    method: "GET",
+    params: { token: currentUser.loginToken },
+  })
+  return response.data.user.stories
+}
