@@ -121,7 +121,7 @@ function updateUIOnUserLogin() {
 async function addFav(storyId){
   
   const response = await axios({
-    url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.name}/favorites/${storyId}`,
+    url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.username}/favorites/${storyId}`,
     method: "POST",
     data: { token: currentUser.loginToken },
   });
@@ -131,7 +131,7 @@ async function addFav(storyId){
 async function removeFav(storyId){
   
   const response = await axios({
-      url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.name}/favorites/${storyId}`,
+      url: `https://hack-or-snooze-v3.herokuapp.com/users/${currentUser.username}/favorites/${storyId}`,
       method: "DELETE",
       data: { token: currentUser.loginToken },
     });

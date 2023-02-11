@@ -34,6 +34,7 @@ $body.on("click", async function(e){
 }});
 
 $favorites.on("click", function(){
+  $allStoriesList.children().show()
 for (let story of $allStoriesList.children()){
  
   if (!currentUser.favorites.some((el)=>{return (el.storyId===story.id) }))
